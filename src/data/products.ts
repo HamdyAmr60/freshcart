@@ -10,6 +10,9 @@ export interface Product {
   sizes?: string[];
   isNewArrival?: boolean;
   isFeatured?: boolean;
+  isOnSale?: boolean;
+  salePercent?: number;
+  rating?: number;
 }
 
 export const products: Product[] = [
@@ -23,7 +26,8 @@ export const products: Product[] = [
     colors: ["Black", "White", "Sage Green"],
     sizes: ["XS", "S", "M", "L", "XL"],
     isNewArrival: true,
-    isFeatured: true
+    isFeatured: true,
+    rating: 4.5
   },
   {
     id: "product_2",
@@ -34,7 +38,10 @@ export const products: Product[] = [
     description: "These relaxed hemp pants are lightweight and breathable, perfect for any casual occasion. Features a comfortable elastic waistband and two side pockets.",
     colors: ["Natural", "Navy", "Olive"],
     sizes: ["XS", "S", "M", "L", "XL"],
-    isFeatured: true
+    isFeatured: true,
+    isOnSale: true,
+    salePercent: 15,
+    rating: 4.2
   },
   {
     id: "product_3",
@@ -45,7 +52,8 @@ export const products: Product[] = [
     description: "Knitted from recycled wool blend, this cardigan offers warmth without sacrificing style. Features a relaxed silhouette and front button closure.",
     colors: ["Oatmeal", "Charcoal", "Forest"],
     sizes: ["S", "M", "L", "XL"],
-    isNewArrival: true
+    isNewArrival: true,
+    rating: 4.8
   },
   {
     id: "product_4",
@@ -56,7 +64,10 @@ export const products: Product[] = [
     description: "Crafted from premium European linen, this button-up shirt offers a breathable, comfortable fit for warm weather. Features a classic collar and relaxed fit.",
     colors: ["White", "Sky Blue", "Terracotta"],
     sizes: ["XS", "S", "M", "L", "XL", "XXL"],
-    isFeatured: true
+    isFeatured: true,
+    isOnSale: true,
+    salePercent: 20,
+    rating: 4.0
   },
   {
     id: "product_5",
@@ -67,7 +78,8 @@ export const products: Product[] = [
     description: "Stay warm in sustainable style. This beanie is made from soft, ethically sourced merino wool that's both warm and breathable.",
     colors: ["Black", "Gray", "Burgundy"],
     sizes: ["One Size"],
-    isNewArrival: true
+    isNewArrival: true,
+    rating: 4.7
   },
   {
     id: "product_6",
@@ -77,7 +89,10 @@ export const products: Product[] = [
     category: "accessories",
     description: "A sustainable alternative to leather, this cork wallet features a slim design with space for essential cards and cash.",
     colors: ["Natural", "Black"],
-    isFeatured: true
+    isFeatured: true,
+    isOnSale: true,
+    salePercent: 10,
+    rating: 4.3
   },
   {
     id: "product_7",
@@ -88,7 +103,8 @@ export const products: Product[] = [
     description: "This modern take on a classic denim jacket is made from Tencel, a sustainable fabric crafted from wood pulp. Features a relaxed fit and front button closure.",
     colors: ["Light Wash", "Medium Wash", "Dark Wash"],
     sizes: ["XS", "S", "M", "L", "XL"],
-    isNewArrival: true
+    isNewArrival: true,
+    rating: 4.6
   },
   {
     id: "product_8",
@@ -98,7 +114,10 @@ export const products: Product[] = [
     category: "accessories",
     description: "This durable tote is made from 100% recycled canvas. Perfect for shopping, beach days, or as an everyday carry-all.",
     colors: ["Natural", "Black", "Sage Green"],
-    isFeatured: true
+    isFeatured: true,
+    isOnSale: true,
+    salePercent: 25,
+    rating: 4.9
   }
 ];
 

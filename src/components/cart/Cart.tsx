@@ -1,9 +1,10 @@
 
 import React from 'react';
-import { X, Minus, Plus, ShoppingBag } from 'lucide-react';
+import { X, Minus, Plus, ShoppingBag, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/context/CartContext';
 import { Link } from 'react-router-dom';
+import { Badge } from '@/components/ui/badge';
 
 const Cart: React.FC = () => {
   const { cart, isCartOpen, closeCart, removeFromCart, updateQuantity, cartTotal } = useCart();
@@ -44,17 +45,33 @@ const Cart: React.FC = () => {
             <ul className="divide-y divide-border">
               {cart.map((item) => (
                 <li key={item.id} className="py-6 flex animate-fade-in">
-                  <div className="flex-shrink-0 w-24 h-24 bg-secondary rounded-md overflow-hidden">
+                  <div className="flex-shrink-0 w-24 h-24 bg-secondary rounded-md overflow-hidden relative">
                     <img 
                       src={item.image} 
                       alt={item.name}
                       className="w-full h-full object-cover"
                     />
+                    {item.isOnSale && (
+                      <div className="absolute top-0 right-0 bg-red-500 text-white text-xs font-semibold px-1 py-0.5">
+                        SALE
+                      </div>
+                    )}
                   </div>
                   
                   <div className="ml-4 flex-1 flex flex-col">
                     <div className="flex justify-between">
                       <div>
+                        <div className="flex items-center gap-2 mb-1">
+                          <Badge variant="secondary" className="text-xs capitalize">
+                            {item.category}
+                          </Badge>
+                          {item.rating && (
+                            <div className="flex items-center">
+                              <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
+                              <span className="text-xs ml-1">{item.rating.toFixed(1)}</span>
+                            </div>
+                          )}
+                        </div>
                         <h4 className="font-medium">{item.name}</h4>
                         <p className="mt-1 text-sm text-muted-foreground">
                           {item.selectedColor && `Color: ${item.selectedColor}`}
@@ -62,10 +79,23 @@ const Cart: React.FC = () => {
                           {item.selectedSize && `Size: ${item.selectedSize}`}
                         </p>
                       </div>
-                      <p className="font-medium">${item.price.toFixed(2)}</p>
+                      <div className="text-right">
+                        {item.isOnSale ? (
+                          <>
+                            <p className="font-medium text-red-500">
+                              ${(item.price - (item.price * (item.salePercent || 0) / 100)).toFixed(2)}
+                            </p>
+                            <p className="text-xs text-muted-foreground line-through">
+                              ${item.price.toFixed(2)}
+                            </p>
+                          </>
+                        ) : (
+                          <p className="font-medium">${item.price.toFixed(2)}</p>
+                        )}
+                      </div>
                     </div>
                     
-                    <div className="flex-1 flex items-end justify-between">
+                    <div className="flex-1 flex items-end justify-between mt-4">
                       <div className="flex items-center border rounded-md">
                         <Button
                           variant="ghost"
