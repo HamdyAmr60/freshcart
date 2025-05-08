@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useCart } from '@/context/CartContext';
+import { DarkModeToggle } from '@/components/theme/DarkModeToggle';
 
 const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -68,6 +69,7 @@ const Navbar: React.FC = () => {
                 <User className="h-5 w-5" />
               </Button>
             </Link>
+            <DarkModeToggle />
             <Button variant="ghost" size="icon" onClick={toggleCart} aria-label="Cart" className="relative">
               <ShoppingBag className="h-5 w-5" />
               {cartItemsCount > 0 && (

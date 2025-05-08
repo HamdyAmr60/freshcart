@@ -30,10 +30,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           />
           
           {/* Add to Cart Button - Visible on Hover */}
-          <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
+          <div className="absolute inset-0 bg-black/30 dark:bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
             <Button 
               onClick={handleAddToCart} 
-              className="bg-white text-foreground hover:bg-sage-100 transition-all transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 duration-300"
+              className="bg-white text-foreground dark:bg-secondary/90 dark:text-foreground hover:bg-sage-100 dark:hover:bg-sage-700 transition-all transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 duration-300"
             >
               <ShoppingCart className="mr-2 h-4 w-4" />
               Add to Cart
