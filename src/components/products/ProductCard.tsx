@@ -2,23 +2,43 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '@/data/products';
-import { Star, BadgePercent } from 'lucide-react';
+import { Star, BadgePercent, ShoppingCart } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { useCart } from '@/context/CartContext';
 
 interface ProductCardProps {
   product: Product;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const { addToCart } = useCart();
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault(); // Prevent navigation to product detail
+    addToCart(product, 1);
+  };
+
   return (
     <div className="group relative">
       <Link to={`/product/${product.id}`} className="block">
-        <div className="product-image-container aspect-[3/4] bg-secondary rounded-md mb-4 overflow-hidden">
+        <div className="product-image-container aspect-[3/4] bg-secondary rounded-md mb-4 overflow-hidden relative">
           <img
             src={product.image}
             alt={product.name}
             className="w-full h-full object-cover transition-transform duration-500"
           />
+          
+          {/* Add to Cart Button - Visible on Hover */}
+          <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
+            <Button 
+              onClick={handleAddToCart} 
+              className="bg-white text-foreground hover:bg-sage-100 transition-all transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 duration-300"
+            >
+              <ShoppingCart className="mr-2 h-4 w-4" />
+              Add to Cart
+            </Button>
+          </div>
           
           {/* Sale Badge */}
           {product.isOnSale && (
