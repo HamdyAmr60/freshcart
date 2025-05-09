@@ -4,7 +4,7 @@ import Layout from '@/components/layouts/Layout';
 import ProductDetailComponent from '@/components/products/ProductDetail';
 import Cart from '@/components/cart/Cart';
 
-const ProductDetail: React.FC = () => {
+const ProductDetail = () => {
   return (
     <Layout>
       <div className="container mx-auto px-4 py-6">

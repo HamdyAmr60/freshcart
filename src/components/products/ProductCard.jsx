@@ -1,20 +1,15 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Product } from '@/data/products';
 import { Star, BadgePercent, ShoppingCart } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/context/CartContext';
 
-interface ProductCardProps {
-  product: Product;
-}
-
-const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
 
-  const handleAddToCart = (e: React.MouseEvent) => {
+  const handleAddToCart = (e) => {
     e.preventDefault(); // Prevent navigation to product detail
     addToCart(product, 1);
   };

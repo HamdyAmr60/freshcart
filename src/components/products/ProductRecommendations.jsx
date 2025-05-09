@@ -3,11 +3,7 @@ import React from 'react';
 import { products } from '@/data/products';
 import ProductCard from './ProductCard';
 
-interface ProductRecommendationsProps {
-  currentProductId: string;
-}
-
-const ProductRecommendations: React.FC<ProductRecommendationsProps> = ({ currentProductId }) => {
+const ProductRecommendations = ({ currentProductId }) => {
   // Get recommendations (excluding current product)
   const recommendations = products
     .filter(product => product.id !== currentProductId)

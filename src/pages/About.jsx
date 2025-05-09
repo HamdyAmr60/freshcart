@@ -2,7 +2,7 @@
 import React from 'react';
 import Layout from '@/components/layouts/Layout';
 
-const About: React.FC = () => {
+const About = () => {
   return (
     <Layout>
       <div className="container mx-auto px-4 py-12">

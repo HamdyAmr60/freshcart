@@ -1,17 +1,8 @@
 
 import React from 'react';
-import { Product } from '@/data/products';
 import ProductCard from './ProductCard';
 
-interface ProductGridProps {
-  products: Product[];
-  emptyMessage?: string;
-}
-
-const ProductGrid: React.FC<ProductGridProps> = ({ 
-  products, 
-  emptyMessage = "No products found" 
-}) => {
+const ProductGrid = ({ products, emptyMessage = "No products found" }) => {
   if (products.length === 0) {
     return (
       <div className="py-12 text-center">

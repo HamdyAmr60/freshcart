@@ -1,44 +1,15 @@
 
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 
-export interface Product {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
-  category: string;
-  description: string;
-  color?: string;
-  size?: string;
-}
+const CartContext = createContext(undefined);
 
-export interface CartItem extends Product {
-  quantity: number;
-  selectedSize?: string;
-  selectedColor?: string;
-}
-
-interface CartContextType {
-  cart: CartItem[];
-  isCartOpen: boolean;
-  addToCart: (product: Product, quantity: number, size?: string, color?: string) => void;
-  removeFromCart: (productId: string) => void;
-  updateQuantity: (productId: string, quantity: number) => void;
-  clearCart: () => void;
-  toggleCart: () => void;
-  closeCart: () => void;
-  cartTotal: number;
-}
-
-const CartContext = createContext<CartContextType | undefined>(undefined);
-
-export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [cart, setCart] = useState<CartItem[]>([]);
+export const CartProvider = ({ children }) => {
+  const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const { toast } = useToast();
 
-  const addToCart = (product: Product, quantity: number = 1, size?: string, color?: string) => {
+  const addToCart = (product, quantity = 1, size, color) => {
     setCart(prevCart => {
       // Check if item is already in cart
       const existingItemIndex = prevCart.findIndex(item => 
@@ -60,7 +31,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         return updatedCart;
       } else {
         // Add new item
-        const newItem: CartItem = {
+        const newItem = {
           ...product,
           quantity,
           selectedSize: size,
@@ -79,7 +50,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setIsCartOpen(true);
   };
 
-  const removeFromCart = (productId: string) => {
+  const removeFromCart = (productId) => {
     setCart(prevCart => prevCart.filter(item => item.id !== productId));
     
     toast({
@@ -88,7 +59,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     });
   };
 
-  const updateQuantity = (productId: string, quantity: number) => {
+  const updateQuantity = (productId, quantity) => {
     if (quantity <= 0) {
       removeFromCart(productId);
       return;
@@ -138,7 +109,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   );
 };
 
-export const useCart = (): CartContextType => {
+export const useCart = () => {
   const context = useContext(CartContext);
   if (context === undefined) {
     throw new Error('useCart must be used within a CartProvider');
