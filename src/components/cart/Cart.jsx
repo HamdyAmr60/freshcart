@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
@@ -16,7 +15,7 @@ const Cart = () => {
         <SheetHeader>
           <SheetTitle className="flex items-center">
             <ShoppingBag className="mr-2 h-5 w-5" />
-            Your Cart
+            Fresh Cart
             <span className="ml-2 text-sm text-muted-foreground">
               ({cart.length} {cart.length === 1 ? 'item' : 'items'})
             </span>
