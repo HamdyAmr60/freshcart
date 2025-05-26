@@ -10,9 +10,9 @@ import { User, LogIn, LogOut } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 
 // Mock authentication functionality - in a real app, this would use Firebase, Auth0, etc.
-const Account: React.FC = () => {
+const Account = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [activeTab, setActiveTab] = useState<'login' | 'register'>('login');
+  const [activeTab, setActiveTab] = useState('login');
   const { toast } = useToast();
 
   // Mock user data
@@ -35,21 +35,21 @@ const Account: React.FC = () => {
     confirmPassword: '',
   });
 
-  const handleLoginChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleLoginChange = (e) => {
     setLoginForm({
       ...loginForm,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleRegisterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleRegisterChange = (e) => {
     setRegisterForm({
       ...registerForm,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = (e) => {
     e.preventDefault();
     // Mock login logic - would normally validate with backend
     toast({
@@ -63,7 +63,7 @@ const Account: React.FC = () => {
     });
   };
 
-  const handleRegister = (e: React.FormEvent) => {
+  const handleRegister = (e) => {
     e.preventDefault();
     
     // Validate passwords match
@@ -79,7 +79,7 @@ const Account: React.FC = () => {
     // Mock register logic - would normally send to backend
     toast({
       title: "Account created successfully",
-      description: "Welcome to Evergreen!",
+      description: "Welcome to FreshCart!",
     });
     setIsLoggedIn(true);
     setUser({
@@ -134,7 +134,7 @@ const Account: React.FC = () => {
             <Tabs 
               defaultValue="login" 
               value={activeTab} 
-              onValueChange={(v) => setActiveTab(v as 'login' | 'register')}
+              onValueChange={(v) => setActiveTab(v)}
               className="w-full"
             >
               <TabsList className="grid w-full grid-cols-2">
