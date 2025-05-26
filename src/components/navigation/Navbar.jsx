@@ -24,7 +24,7 @@ const Navbar = () => {
 
   return (
     <header className="sticky top-0 z-40 w-full bg-background/80 backdrop-blur-sm border-b border-border transition-all duration-300">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         <div className="flex h-16 items-center justify-between">
           {/* Mobile Menu Button */}
           <div className="flex lg:hidden">
@@ -35,13 +35,13 @@ const Navbar = () => {
 
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
-            <Link to="/" className="text-xl font-semibold tracking-tight hover:text-sage-500 transition-colors duration-300">
+            <Link to="/" className="text-xl lg:text-2xl font-bold tracking-tight hover:text-sage-500 transition-colors duration-300">
               FRESHCART
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-8 xl:space-x-12">
             <Link to="/products/all" className="text-foreground/80 hover:text-foreground text-sm font-medium transition-colors nav-link">
               All Products
             </Link>
@@ -60,7 +60,7 @@ const Navbar = () => {
           </nav>
 
           {/* Icons */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-3 lg:space-x-4">
             <Button variant="ghost" size="icon" onClick={toggleSearch} aria-label="Search" className="btn-hover">
               <Search className="h-5 w-5" />
             </Button>
