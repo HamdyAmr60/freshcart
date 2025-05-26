@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { useCart } from '@/context/CartContext';
 import { DarkModeToggle } from '@/components/theme/DarkModeToggle';
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const { cart, toggleCart } = useCart();
@@ -36,7 +36,7 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="text-xl font-semibold tracking-tight">
-              FRESHCART
+              EVERGREEN
             </Link>
           </div>
 
