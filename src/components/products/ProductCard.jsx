@@ -29,15 +29,15 @@ const ProductCard = ({ product }) => {
             <Button 
               onClick={handleAddToCart} 
               size="sm"
-              className="bg-white text-black hover:bg-gray-100 rounded-full px-6 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-lg"
+              className="btn-primary-icon cart-btn bg-white text-gray-900 hover:bg-gray-50 rounded-full px-6 py-2.5 font-semibold transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-0 shadow-2xl border-0"
             >
-              <ShoppingCart className="mr-2 h-4 w-4" />
+              <ShoppingCart className="h-4 w-4" />
               Add to Cart
             </Button>
             <Button 
               size="sm"
               variant="secondary"
-              className="rounded-full p-3 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-75 shadow-lg"
+              className="btn-icon-only bg-white/90 hover:bg-white text-gray-900 rounded-full p-3 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-100 shadow-xl border-0"
               onClick={(e) => e.preventDefault()}
             >
               <Heart className="h-4 w-4" />
@@ -47,13 +47,13 @@ const ProductCard = ({ product }) => {
           {/* Badges */}
           <div className="absolute top-4 left-4 flex flex-col gap-2">
             {product.isOnSale && (
-              <Badge className="bg-red-500 hover:bg-red-600 text-white rounded-full px-3 py-1 text-xs font-medium">
+              <Badge className="bg-red-500 hover:bg-red-600 text-white rounded-full px-3 py-1 text-xs font-medium shadow-lg">
                 <BadgePercent className="h-3 w-3 mr-1" />
                 {product.salePercent}% OFF
               </Badge>
             )}
             {product.isNewArrival && !product.isOnSale && (
-              <Badge className="bg-primary hover:bg-primary/90 rounded-full px-3 py-1 text-xs">
+              <Badge className="bg-primary hover:bg-primary/90 rounded-full px-3 py-1 text-xs shadow-lg">
                 New
               </Badge>
             )}

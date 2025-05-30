@@ -120,6 +120,61 @@
   .stagger-fade-in > *:nth-child(4) { animation-delay: 0.4s; }
   .stagger-fade-in > *:nth-child(5) { animation-delay: 0.5s; }
   .stagger-fade-in > *:nth-child(6) { animation-delay: 0.6s; }
+
+  /* Enhanced Button with Icon Styles */
+  .btn-with-icon {
+    @apply inline-flex items-center gap-2 font-medium transition-all duration-200 active:scale-95;
+  }
+
+  .btn-with-icon svg {
+    @apply transition-transform duration-200;
+  }
+
+  .btn-with-icon:hover svg {
+    @apply scale-110;
+  }
+
+  /* Primary Button with Icon */
+  .btn-primary-icon {
+    @apply btn-with-icon bg-gradient-to-r from-primary to-primary/90 text-primary-foreground shadow-lg hover:shadow-xl hover:shadow-primary/25 border-0;
+  }
+
+  /* Secondary Button with Icon */
+  .btn-secondary-icon {
+    @apply btn-with-icon bg-secondary text-secondary-foreground border border-border/50 hover:bg-secondary/80 hover:border-border hover:shadow-md;
+  }
+
+  /* Ghost Button with Icon */
+  .btn-ghost-icon {
+    @apply btn-with-icon text-muted-foreground hover:text-foreground hover:bg-accent/50 border border-transparent hover:border-border/30;
+  }
+
+  /* Icon-only Button */
+  .btn-icon-only {
+    @apply inline-flex items-center justify-center transition-all duration-200 active:scale-95 hover:shadow-md;
+  }
+
+  .btn-icon-only svg {
+    @apply transition-all duration-200;
+  }
+
+  .btn-icon-only:hover svg {
+    @apply scale-110 rotate-3;
+  }
+
+  /* Cart Button Enhancement */
+  .cart-btn {
+    @apply relative overflow-hidden;
+  }
+
+  .cart-btn::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full transition-transform duration-700;
+  }
+
+  .cart-btn:hover::before {
+    @apply translate-x-full;
+  }
 }
 
 @keyframes fadeInUp {
