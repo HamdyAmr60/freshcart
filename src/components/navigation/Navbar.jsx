@@ -44,7 +44,7 @@ const Navbar = () => {
               size="icon" 
               onClick={toggleMobileMenu} 
               aria-label="Menu"
-              className="btn-icon-only hover:bg-muted/80 rounded-xl"
+              className="btn-icon-only hover:bg-muted/80 rounded-xl p-3"
             >
               {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
@@ -83,12 +83,12 @@ const Navbar = () => {
               size="icon" 
               onClick={toggleSearch} 
               aria-label="Search"
-              className="btn-icon-only hover:bg-muted/80 rounded-xl"
+              className="btn-icon-only hover:bg-muted/80 rounded-xl p-3"
             >
               <Search className="h-5 w-5" />
             </Button>
             <Link to="/account">
-              <Button variant="ghost" size="icon" aria-label="Account" className="btn-icon-only hover:bg-muted/80 rounded-xl">
+              <Button variant="ghost" size="icon" aria-label="Account" className="btn-icon-only hover:bg-muted/80 rounded-xl p-3">
                 <User className="h-5 w-5" />
               </Button>
             </Link>
@@ -98,11 +98,11 @@ const Navbar = () => {
               size="icon" 
               onClick={toggleCart} 
               aria-label="Cart" 
-              className="btn-icon-only relative hover:bg-muted/80 rounded-xl"
+              className="btn-icon-only relative hover:bg-muted/80 rounded-xl p-3"
             >
               <ShoppingBag className="h-5 w-5" />
               {cartItemsCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium animate-pulse shadow-lg">
+                <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium animate-pulse shadow-lg">
                   {cartItemsCount}
                 </span>
               )}
@@ -119,7 +119,7 @@ const Navbar = () => {
                 className="w-full h-12 text-base rounded-xl border-border/50 focus:border-primary"
                 autoFocus
               />
-              <Button size="lg" className="btn-primary-icon px-8 rounded-xl">
+              <Button className="btn-primary-icon px-8 py-3 rounded-xl">
                 <Search className="h-4 w-4" />
                 Search
               </Button>

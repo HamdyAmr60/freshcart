@@ -28,16 +28,14 @@ const ProductCard = ({ product }) => {
           <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 flex items-center justify-center gap-3 transition-all duration-300">
             <Button 
               onClick={handleAddToCart} 
-              size="sm"
-              className="btn-primary-icon cart-btn bg-white text-gray-900 hover:bg-gray-50 rounded-full px-6 py-2.5 font-semibold transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-0 shadow-2xl border-0"
+              className="btn-primary-icon cart-btn bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6 py-3 font-semibold transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-0 shadow-lg"
             >
               <ShoppingCart className="h-4 w-4" />
               Add to Cart
             </Button>
             <Button 
-              size="sm"
               variant="secondary"
-              className="btn-icon-only bg-white/90 hover:bg-white text-gray-900 rounded-full p-3 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-100 shadow-xl border-0"
+              className="btn-icon-only bg-white/90 hover:bg-white text-gray-900 rounded-full p-3 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-100 shadow-lg"
               onClick={(e) => e.preventDefault()}
             >
               <Heart className="h-4 w-4" />
