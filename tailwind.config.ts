@@ -52,23 +52,10 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
-				},
-				// Custom colors
-				sage: {
-					50: '#f4f7f4',
-					100: '#e6ebe6',
-					200: '#d0dad0',
-					300: '#b0c2b0',
-					400: '#8ea490',
-					500: '#688768',
-					600: '#4e6a4e',
-					700: '#3f553f',
-					800: '#354535',
-					900: '#2e3b2e',
 				}
 			},
 			fontFamily: {
-				sans: ['Poppins', 'sans-serif'],
+				sans: ['Inter', 'sans-serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -85,14 +72,29 @@ export default {
 					to: { height: '0' }
 				},
 				fadeIn: {
-					from: { opacity: '0' },
-					to: { opacity: '1' }
+					from: { opacity: '0', transform: 'translateY(20px)' },
+					to: { opacity: '1', transform: 'translateY(0)' }
+				},
+				'fade-in-up': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(20px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fade-in': 'fadeIn 0.3s ease-in-out'
+				'fade-in': 'fadeIn 0.6s ease-out',
+				'fade-in-up': 'fade-in-up 0.6s ease-out'
+			},
+			spacing: {
+				'18': '4.5rem',
+				'88': '22rem',
 			}
 		}
 	},
