@@ -42,14 +42,14 @@ const ProductCard = ({ product }) => {
           <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 flex items-center justify-center gap-3 transition-all duration-300">
             <Button 
               onClick={handleAddToCart} 
-              className="btn-primary-icon cart-btn bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6 py-3 font-semibold transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-0 shadow-lg"
+              className="bg-sage-500 hover:bg-sage-600 text-white font-medium px-6 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transform translate-y-4 group-hover:translate-y-0 delay-0"
             >
-              <ShoppingCart className="h-4 w-4" />
+              <ShoppingCart className="h-4 w-4 mr-2" />
               Add to Cart
             </Button>
             <Button 
               variant="secondary"
-              className={`btn-icon-only rounded-full p-3 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-100 shadow-lg ${
+              className={`rounded-full p-3 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-100 shadow-lg hover:scale-110 active:scale-95 ${
                 isProductFavorite 
                   ? 'bg-red-500 hover:bg-red-600 text-white' 
                   : 'bg-white/90 hover:bg-white text-gray-900'
