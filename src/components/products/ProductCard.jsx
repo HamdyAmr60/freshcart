@@ -15,9 +15,9 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="product-card group">
-      <Link to={`/product/${product.id}`} className="block">
-        <div className="product-image relative">
+    <div className="product-card group h-full flex flex-col">
+      <Link to={`/product/${product.id}`} className="block h-full flex flex-col">
+        <div className="product-image relative aspect-square overflow-hidden">
           <img
             src={product.image}
             alt={product.name}
@@ -58,14 +58,14 @@ const ProductCard = ({ product }) => {
           </div>
         </div>
         
-        <div className="p-6">
+        <div className="p-6 flex-1 flex flex-col">
           {/* Category */}
-          <Badge variant="secondary" className="text-xs capitalize mb-3 rounded-full">
+          <Badge variant="secondary" className="text-xs capitalize mb-3 rounded-full w-fit">
             {product.category}
           </Badge>
           
           {/* Product Name */}
-          <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-2">
+          <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors line-clamp-2 flex-1">
             {product.name}
           </h3>
           
@@ -91,7 +91,7 @@ const ProductCard = ({ product }) => {
           )}
           
           {/* Price */}
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between mt-auto">
             {product.isOnSale ? (
               <div className="flex items-center gap-2">
                 <span className="text-xl font-bold text-red-500">

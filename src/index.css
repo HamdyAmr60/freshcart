@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
@@ -152,6 +151,16 @@
   
   .hover-lift {
     @apply transition-transform duration-300 hover:-translate-y-1;
+  }
+  
+  .product-card {
+    @apply bg-card border border-border rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105 overflow-hidden;
+    min-height: 400px;
+  }
+  
+  .product-image {
+    @apply w-full bg-muted;
+    height: 250px;
   }
 }
 
