@@ -1,10 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
-import { Menu, Search, ShoppingBag, User, X } from 'lucide-react';
+import { Menu, Search, ShoppingBag, User, X, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useCart } from '@/context/CartContext';
+import { useFavorites } from '@/context/FavoritesContext';
 import { DarkModeToggle } from '@/components/theme/DarkModeToggle';
 
 const Navbar = () => {
@@ -12,8 +13,10 @@ const Navbar = () => {
   const [searchOpen, setSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { cart, toggleCart } = useCart();
+  const { favorites } = useFavorites();
   
   const cartItemsCount = cart.reduce((total, item) => total + item.quantity, 0);
+  const favoritesCount = favorites.length;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -92,6 +95,16 @@ const Navbar = () => {
                 <User className="h-5 w-5" />
               </Button>
             </Link>
+            <Link to="/favorites">
+              <Button variant="ghost" size="icon" aria-label="Favorites" className="btn-icon-only relative hover:bg-muted/80 rounded-xl p-3">
+                <Heart className="h-5 w-5" />
+                {favoritesCount > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium animate-pulse shadow-lg">
+                    {favoritesCount}
+                  </span>
+                )}
+              </Button>
+            </Link>
             <DarkModeToggle />
             <Button 
               variant="ghost" 
@@ -142,6 +155,9 @@ const Navbar = () => {
               </Link>
               <Link to="/products/accessories" className="block text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">
                 Accessories
+              </Link>
+              <Link to="/favorites" className="block text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">
+                Favorites ({favoritesCount})
               </Link>
               <Link to="/about" className="block text-lg font-medium text-muted-foreground hover:text-foreground transition-colors">
                 Our Story

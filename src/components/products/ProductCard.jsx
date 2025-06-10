@@ -5,13 +5,27 @@ import { Star, BadgePercent, ShoppingCart, Heart } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/context/CartContext';
+import { useFavorites } from '@/context/FavoritesContext';
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
+  const { addToFavorites, removeFromFavorites, isFavorite } = useFavorites();
+  const isProductFavorite = isFavorite(product.id);
 
   const handleAddToCart = (e) => {
     e.preventDefault();
+    e.stopPropagation();
     addToCart(product, 1);
+  };
+
+  const handleFavoriteClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (isProductFavorite) {
+      removeFromFavorites(product.id);
+    } else {
+      addToFavorites(product);
+    }
   };
 
   return (
@@ -35,10 +49,14 @@ const ProductCard = ({ product }) => {
             </Button>
             <Button 
               variant="secondary"
-              className="btn-icon-only bg-white/90 hover:bg-white text-gray-900 rounded-full p-3 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-100 shadow-lg"
-              onClick={(e) => e.preventDefault()}
+              className={`btn-icon-only rounded-full p-3 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 delay-100 shadow-lg ${
+                isProductFavorite 
+                  ? 'bg-red-500 hover:bg-red-600 text-white' 
+                  : 'bg-white/90 hover:bg-white text-gray-900'
+              }`}
+              onClick={handleFavoriteClick}
             >
-              <Heart className="h-4 w-4" />
+              <Heart className={`h-4 w-4 ${isProductFavorite ? 'fill-current' : ''}`} />
             </Button>
           </div>
           
@@ -56,6 +74,13 @@ const ProductCard = ({ product }) => {
               </Badge>
             )}
           </div>
+
+          {/* Favorite Indicator */}
+          {isProductFavorite && (
+            <div className="absolute top-4 right-4">
+              <Heart className="h-5 w-5 text-red-500 fill-current" />
+            </div>
+          )}
         </div>
         
         <div className="p-6 flex-1 flex flex-col">
